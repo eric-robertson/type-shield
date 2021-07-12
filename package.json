@@ -1,0 +1,25 @@
+{
+  "name": "type-shield",
+  "version": "1.0.0",
+  "description": "Lightweight server-side type checking for those pesky clients",
+  "main": "min.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eric-robertson/type-shield.git"
+  },
+  "keywords": [
+    "type",
+    "saftey",
+    "node"
+  ],
+  "author": "eric-robertson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eric-robertson/type-shield/issues"
+  },
+  "homepage": "https://github.com/eric-robertson/type-shield#readme"
+}
