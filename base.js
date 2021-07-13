@@ -1,4 +1,4 @@
-import { assessObject } from './main.js'
+import { assessObject } from './index.js'
 
 export default {
 
@@ -11,7 +11,7 @@ export default {
     // Item is a string of given length or up to limit length
     _string ( item, definition ) {
         
-        const { length, limit } = definition
+        const { length, limit, min } = definition
 
         if ( !( typeof item === 'string' ))
             return 'Not a string'
@@ -21,6 +21,9 @@ export default {
 
         if ( limit && item.length > limit )
             return `String is too long, limit: ${limit}`
+
+        if ( min && item.length < min )
+            return `String is too short, required: ${limit}`
 
     },
 
@@ -57,8 +60,19 @@ export default {
     // Defined is a list of objects
     // Item is contained in that list
     _oneOf ( item, definition ) {
-        if ( ! definition.includes( item ) )
-            return 'Not one of specified values'
+
+        let errors = []
+
+        for ( let i in definition ){
+            const def = definition[i]
+            const result = assessObject( item, def )
+
+            if ( result.valid ) return
+            errors.push( result.result )
+        }
+
+        return { valid : false, result : errors }
+        
     },
 
     // Verify object is an array of items matching templates
@@ -84,15 +98,6 @@ export default {
             return { valid, result }
             
 
-    },
-
-
-    // Verify object matches list of item templates
-    // Defined is an object array
-    // Item is a list of templates to match
-    _like ( item, definition ) {
-        return assessObject(item, definition)
-        
     },
 
     // Verify object structure matches template

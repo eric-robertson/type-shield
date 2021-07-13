@@ -1,8 +1,8 @@
 {
-  "name": "type-shield",
-  "version": "1.0.0",
+  "name": "template-shield",
+  "version": "1.0.4",
   "description": "Lightweight server-side type checking for those pesky clients",
-  "main": "min.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
